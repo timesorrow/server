@@ -126,7 +126,7 @@ bool GridMap::loadData(char* filename)
     }
 
     sLog.outError("Map file '%s' is non-compatible version created with a different map-extractor version.", filename);
-    sLog.outError(filename, header.mapMagic, header.versionMagic, *((uint32 const*)(MAP_MAGIC)), *((uint32 const*)(MAP_VERSION_MAGIC)),IsAcceptableClientBuild(header.buildMagic));
+    sLog.outError(filename, header.mapMagic, header.versionMagic, MAP_MAGIC, MAP_VERSION_MAGIC,IsAcceptableClientBuild(header.buildMagic));
     fclose(in);
     return false;
 }
@@ -711,7 +711,7 @@ bool GridMap::ExistMap(uint32 mapid, int gx, int gy)
             !IsAcceptableClientBuild(header.buildMagic))
     {
         sLog.outError("Map file '%s' is non-compatible version created with a different map-extractor version.", tmp);
-        sLog.outError(filename, header.mapMagic, header.versionMagic, *((uint32 const*)(MAP_MAGIC)), *((uint32 const*)(MAP_VERSION_MAGIC)),IsAcceptableClientBuild(header.buildMagic));
+        sLog.outError(filename, header.mapMagic, header.versionMagic, MAP_MAGIC, MAP_VERSION_MAGIC,IsAcceptableClientBuild(header.buildMagic));
         delete[] tmp;
         fclose(pf);                                         // close file before return
         return false;
