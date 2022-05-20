@@ -126,6 +126,7 @@ bool GridMap::loadData(char* filename)
     }
 
     sLog.outError("Map file '%s' is non-compatible version created with a different map-extractor version.", filename);
+    sLog.outError(filename, header.mapMagic, header.versionMagic, MAP_MAGIC, MAP_VERSION_MAGIC,IsAcceptableClientBuild(header.buildMagic));
     fclose(in);
     return false;
 }
